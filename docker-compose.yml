@@ -36,7 +36,7 @@ services:
       database:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:${POSTGRES_PORT}/${POSTGRES_DB}
       NODE_ENV: ${ENVIRONMENT}
       PORT: ${API_PORT}
     ports:
@@ -46,4 +46,11 @@ services:
       - /app/node_modules
     networks:
       - app-network
-    command: ["/bin/sh", "-c", "npx prisma migrate deploy && npm run start"]
+    command: >
+      /bin/sh -c "
+      if [ '$$NODE_ENV' = 'development' ]; then
+        npm install && npm run start:dev;
+      else
+        npm run build && npm run start:prod;
+      fi
+      "
