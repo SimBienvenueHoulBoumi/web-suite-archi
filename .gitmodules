@@ -1,0 +1,6 @@
+[submodule "web-suite-api"]
+	path = web-suite-api
+	url = ./web-suite-api
+[submodule "web-suite-webapp"]
+	path = web-suite-webapp
+	url = ./web-suite-webapp
