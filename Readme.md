@@ -10,4 +10,7 @@ url: http://host.docker.internal:[PORT]/api#/
 ## supprimer tout
 docker system  prune -a
 
+
+## Quand le docker est lancé en mode dev les modifications sont prisent en compte automatiquement
+
 ```
