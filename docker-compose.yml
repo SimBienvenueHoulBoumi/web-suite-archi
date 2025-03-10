@@ -63,11 +63,11 @@ services:
       - api
     environment:
       API_HOST: http://api:${API_PORT}
-      WEB_APP_PORT: ${WEB_APP_PORT}  # Correction ici, mettre dans environment
+      WEB_APP_PORT: ${WEB_APP_PORT} 
     env_file:
       - .env
     ports:
-      - "${WEB_APP_PORT}:${WEB_APP_PORT}"  # Utiliser la variable correctement
+      - "${WEB_APP_PORT}:${WEB_APP_PORT}"
     volumes:
       - ./web-suite-webapp:/app
       - /app/node_modules
